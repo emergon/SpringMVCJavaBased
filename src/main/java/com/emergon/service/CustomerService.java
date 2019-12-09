@@ -1,0 +1,9 @@
+package com.emergon.service;
+
+import com.emergon.entities.Customer;
+import java.util.List;
+
+public interface CustomerService {
+    
+    List<Customer> getAllCustomers();
+}
