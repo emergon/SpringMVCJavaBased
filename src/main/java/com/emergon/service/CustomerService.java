@@ -6,4 +6,6 @@ import java.util.List;
 public interface CustomerService {
     
     List<Customer> getAllCustomers();
+
+    public void createCustomer(Customer c);
 }

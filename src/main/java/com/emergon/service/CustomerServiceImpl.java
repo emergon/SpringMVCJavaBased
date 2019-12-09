@@ -18,5 +18,10 @@ public class CustomerServiceImpl implements CustomerService{
     public List<Customer> getAllCustomers() {
         return cdao.findAll();
     }
+
+    @Override
+    public void createCustomer(Customer c) {
+        cdao.create(c);
+    }
     
 }

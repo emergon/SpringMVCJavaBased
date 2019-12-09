@@ -7,9 +7,16 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
         <h1>Hello World!</h1>
+        <a href="${pageContext.request.contextPath}/customer/create">Create Customer</a>
+        <table border="1">
         <c:forEach items="${listOfCustomer}" var="c">
-            ${c}
+            <tr>
+                <td>${c.ccode}</td>
+                <td>${c.cname}</td>
+            </tr>
         </c:forEach>
+        </table>
     </body>
 </html>

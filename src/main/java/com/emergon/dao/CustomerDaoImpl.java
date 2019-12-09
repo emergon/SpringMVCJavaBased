@@ -24,6 +24,11 @@ public class CustomerDaoImpl implements CustomerDao{
          List<Customer> list = q.getResultList();
          return list;
     }
+
+    @Override
+    public void create(Customer c) {
+        getSession().save(c);
+    }
     
     
 }

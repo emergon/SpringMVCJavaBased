@@ -37,21 +37,6 @@ public class HomeController {
         return mv;
     }
     
-    @RequestMapping(value = "/customer/create", method = RequestMethod.GET)
-    public String showForm(@ModelAttribute("customer") Customer c){
-        return "formCustomer";
-    }
     
-    //@RequestMapping(value = "/customer/create", method = RequestMethod.POST)
-    @PostMapping("/customer/create")
-    public String createCustomer(Customer c,
-            //@RequestParam("name") String onoma, 
-            //@RequestParam("age") int age,
-            Model m){
-        //m.addAttribute("name", onoma);
-        //m.addAttribute("age", age);
-        m.addAttribute("customer", c);
-        return "customerDetails";
-    }
     
 }

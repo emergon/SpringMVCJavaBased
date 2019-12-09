@@ -10,7 +10,7 @@
         <!--http://localhost:8080/SpringMVCJavaBased/user?name=Nick-->
         <a href="${pageContext.request.contextPath}/user?name=Nick">Pass Attribute</a>
         <a href="${pageContext.request.contextPath}/userdetails/Nick/10">User details</a>
-        <a href="${pageContext.request.contextPath}/customer/create">Create customer</a>
+        <a href="${pageContext.request.contextPath}/customer/list">Show Customers</a>
         
     </body>
 </html>

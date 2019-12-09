@@ -12,9 +12,7 @@
             action="${pageContext.request.contextPath}/customer/create" 
             method="POST"
             modelAttribute="customer">
-            Name : <form:input path="name"/>
-            <br/>
-            Age: <form:input path="age"/>
+            Name: <form:input path="cname"/>
             <br/>
             <input type="submit" value="Submit">
         </form:form>
