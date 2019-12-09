@@ -23,5 +23,10 @@ public class CustomerServiceImpl implements CustomerService{
     public void createCustomer(Customer c) {
         cdao.create(c);
     }
+
+    @Override
+    public void deleteCustomer(int id) {
+        cdao.delete(id);
+    }
     
 }

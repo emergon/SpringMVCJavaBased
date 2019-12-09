@@ -12,9 +12,22 @@
         <a href="${pageContext.request.contextPath}/customer/create">Create Customer</a>
         <table border="1">
         <c:forEach items="${listOfCustomer}" var="c">
+            <c:url var="deleteLink" value="/customer/delete">
+                <c:param name="customerId" value="${c.ccode}" />
+            </c:url>
+            <c:url var="updateLink" value="/customer/update">
+                <c:param name="customerId" value="${c.ccode}" />
+            </c:url>
+            
             <tr>
                 <td>${c.ccode}</td>
                 <td>${c.cname}</td>
+                <td>
+                    <a href="${updateLink}">Update</a>
+                </td>
+                <td>
+                    <a href="${deleteLink}">Delete</a>
+                </td>
             </tr>
         </c:forEach>
         </table>

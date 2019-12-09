@@ -4,7 +4,6 @@ import com.emergon.entities.Customer;
 import com.emergon.service.CustomerService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/customer")
@@ -37,6 +37,12 @@ public class CustomerController {
     @PostMapping("/create")
     public String createCustomer(Customer c, Model m){
         service.createCustomer(c);
+        return "redirect:/customer/list";
+    }
+    
+    @GetMapping("/delete")
+    public String deleteCustomer(@RequestParam("customerId") int id){
+        service.deleteCustomer(id);
         return "redirect:/customer/list";
     }
     

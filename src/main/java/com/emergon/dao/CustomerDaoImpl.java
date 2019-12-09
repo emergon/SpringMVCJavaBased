@@ -29,6 +29,12 @@ public class CustomerDaoImpl implements CustomerDao{
     public void create(Customer c) {
         getSession().save(c);
     }
+
+    @Override
+    public void delete(int id) {
+        Customer c = getSession().find(Customer.class, id);
+        getSession().delete(c);
+    }
     
     
 }
