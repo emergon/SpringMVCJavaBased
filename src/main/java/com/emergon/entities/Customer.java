@@ -14,16 +14,17 @@ import javax.persistence.Table;
 @Entity(name = "Customer")
 @Table(name = "customer")
 @NamedQueries({
-@NamedQuery(name = "Customer.deleteById", query = "DELETE FROM Customer c WHERE c.ccode=:kwdikos")
+    @NamedQuery(name = "Customer.deleteById", query = "DELETE FROM Customer c WHERE c.ccode=:kwdikos"),
+    @NamedQuery(name = "Customer.findLikeName", query = "SELECT c FROM Customer c WHERE c.cname LIKE :name")
 })
-public class Customer implements Serializable{
+public class Customer implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ccode")
     private int ccode;
     @Column(name = "cname")
     private String cname;
-    
 
     public Customer() {
     }
@@ -83,5 +84,4 @@ public class Customer implements Serializable{
         this.ccode = ccode;
     }
 
-    
 }

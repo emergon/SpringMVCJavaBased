@@ -33,5 +33,11 @@ public class CustomerServiceImpl implements CustomerService{
     public Customer findCustomerById(Integer id) {
         return cdao.findById(id);
     }
+
+    @Override
+    public List<Customer> findCustomersByName(String searchName) {
+        List<Customer> list = cdao.findCustomersByName(searchName);
+        return list;
+    }
     
 }

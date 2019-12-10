@@ -55,4 +55,12 @@ public class CustomerController {
         return "formCustomer";
     }
     
+    @GetMapping("/search")
+    public String showCustomersByName(
+            @RequestParam("searchName") String searchName, Model model){
+        List<Customer> list = service.findCustomersByName(searchName);
+        model.addAttribute("listOfCustomer", list);
+        return "listCustomer";
+    }
+    
 }

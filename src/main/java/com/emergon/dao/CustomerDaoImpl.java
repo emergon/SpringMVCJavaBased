@@ -41,6 +41,14 @@ public class CustomerDaoImpl implements CustomerDao{
     public Customer findById(Integer id) {
         return (Customer)getSession().get(Customer.class, id);
     }
+
+    @Override
+    public List<Customer> findCustomersByName(String searchName) {
+        Query q = getSession().createNamedQuery("Customer.findLikeName");
+        q.setParameter("name", "%"+searchName+"%");
+        List<Customer> list = q.getResultList();
+        return list;
+    }
     
     
 }
