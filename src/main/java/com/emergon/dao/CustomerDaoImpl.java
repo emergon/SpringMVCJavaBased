@@ -26,14 +26,20 @@ public class CustomerDaoImpl implements CustomerDao{
     }
 
     @Override
-    public void create(Customer c) {
-        getSession().save(c);
+    public void createOrUpdate(Customer c) {
+        getSession().saveOrUpdate(c);
     }
 
     @Override
     public void delete(int id) {
-        Customer c = getSession().find(Customer.class, id);
-        getSession().delete(c);
+        Query q = getSession().createNamedQuery("Customer.deleteById");
+        q.setParameter("kwdikos", id);
+        int result = q.executeUpdate();
+    }
+
+    @Override
+    public Customer findById(Integer id) {
+        return (Customer)getSession().get(Customer.class, id);
     }
     
     

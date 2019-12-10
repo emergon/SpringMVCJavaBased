@@ -12,7 +12,7 @@
         <a href="${pageContext.request.contextPath}/customer/create">Create Customer</a>
         <table border="1">
         <c:forEach items="${listOfCustomer}" var="c">
-            <c:url var="deleteLink" value="/customer/delete">
+            <c:url value="/customer/delete" var="deleteLink" >
                 <c:param name="customerId" value="${c.ccode}" />
             </c:url>
             <c:url var="updateLink" value="/customer/update">
@@ -26,7 +26,10 @@
                     <a href="${updateLink}">Update</a>
                 </td>
                 <td>
-                    <a href="${deleteLink}">Delete</a>
+                    <a href="${deleteLink}"
+                       onclick="if (!(confirm('Are you sure you want to delete customer with name: ${c.cname}?'))) 
+                           return false"
+                       >Delete</a>
                 </td>
             </tr>
         </c:forEach>

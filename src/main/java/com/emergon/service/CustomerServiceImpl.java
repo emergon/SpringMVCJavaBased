@@ -20,13 +20,18 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public void createCustomer(Customer c) {
-        cdao.create(c);
+    public void createOrUpdateCustomer(Customer c) {
+        cdao.createOrUpdate(c);
     }
 
     @Override
     public void deleteCustomer(int id) {
         cdao.delete(id);
+    }
+
+    @Override
+    public Customer findCustomerById(Integer id) {
+        return cdao.findById(id);
     }
     
 }

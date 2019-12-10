@@ -7,10 +7,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name = "Customer")
 @Table(name = "customer")
+@NamedQueries({
+@NamedQuery(name = "Customer.deleteById", query = "DELETE FROM Customer c WHERE c.ccode=:kwdikos")
+})
 public class Customer implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

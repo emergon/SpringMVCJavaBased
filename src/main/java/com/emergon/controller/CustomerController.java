@@ -35,8 +35,8 @@ public class CustomerController {
     
     //@RequestMapping(value = "/customer/create", method = RequestMethod.POST)
     @PostMapping("/create")
-    public String createCustomer(Customer c, Model m){
-        service.createCustomer(c);
+    public String createOrUpdateCustomer(Customer c){
+        service.createOrUpdateCustomer(c);
         return "redirect:/customer/list";
     }
     
@@ -44,6 +44,15 @@ public class CustomerController {
     public String deleteCustomer(@RequestParam("customerId") int id){
         service.deleteCustomer(id);
         return "redirect:/customer/list";
+    }
+    
+    @GetMapping("/update")
+    public String showUpdateForm(
+            @RequestParam("customerId") Integer id, Model model
+    ){
+        Customer c = service.findCustomerById(id);
+        model.addAttribute("customer", c);
+        return "formCustomer";
     }
     
 }

@@ -7,7 +7,9 @@ public interface CustomerService {
     
     List<Customer> getAllCustomers();
 
-    public void createCustomer(Customer c);
+    public void createOrUpdateCustomer(Customer c);
 
     public void deleteCustomer(int id);
+
+    public Customer findCustomerById(Integer id);
 }
