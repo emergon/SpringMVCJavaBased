@@ -1,18 +1,23 @@
 package com.emergon.controller;
 
+import com.emergon.entities.User;
 import com.emergon.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/")
+@SessionAttributes("user")
 public class HomeController {
 
     @Autowired
@@ -41,21 +46,36 @@ public class HomeController {
         return mv;
     }
 
+    @ModelAttribute("user")//Before each request this method is been activated
+    public User user(){
+        User user = new User();
+        System.out.println("user ========="+user);
+        return user;
+    }
+    
     @GetMapping("/login")
-    public String showLoginForm() {
+    public String showLoginForm(
+    //        @ModelAttribute("user") User user, Model m
+    ) {
+        //m.addAttribute("user", new User());
         return "login";
     }
 
     @PostMapping("/login")
-    public String login(Model model,
-            @RequestParam("username") String username,
-            @RequestParam("password") String password) {
-        boolean validatedUser = loginService.validateUser(username, password);
-        if(!validatedUser){
+    public String login(Model model, @ModelAttribute("user") User user) {
+        User validatedUser = loginService.validateUser(user);
+        if(validatedUser == null){
             model.addAttribute("message", "Invalid username/password");
             return "login";
+        }else{
+            return "redirect:/";
         }
-        return "home";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(SessionStatus status){
+        status.setComplete();
+        return "redirect:/login";
     }
 
 }

@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -9,11 +10,14 @@
         <div align="center">
             <h3>Enter your credentials</h3>
             <p>${message}</p>
-            <form action="${pageContext.request.contextPath}/login" method="POST">
-                Username: <input type="text" name="username"><br/>
-                Password: <input type="password" name="password"><br/>
+            <form:form 
+                action="${pageContext.request.contextPath}/login" 
+                method="POST"
+                modelAttribute="user">
+                Username: <form:input path="username"/><br/>
+                Password: <form:input type="password" path="password"/><br/>
                 <input type="submit" value="Login">
-            </form>
+            </form:form>
         </div>
     </body>
 </html>
