@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+            
     </head>
     <body>
         <c:choose>
@@ -16,16 +17,17 @@
                 <h1>Create Customer</h1>
             </c:otherwise>
         </c:choose>
-        <form:form 
+            <form:form id="formCustomer"
             action="${pageContext.request.contextPath}/customer/create" 
             method="POST"
             modelAttribute="customer">
             <form:hidden path="ccode"/>
-            Name: <form:input path="cname"/>
+            Name: <form:input id="cname" path="cname"/>
             <br/>
             <input type="submit" value="Submit">
         </form:form>
         <br/>
         <a href="${pageContext.request.contextPath}/customer/list">Back to list</a>
     </body>
+    
 </html>
